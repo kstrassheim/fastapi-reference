@@ -5,9 +5,10 @@
 name: Build and deploy Python app to Azure Web App - fast-api-reference
 
 on:
-  push:
+  pull_request:
+    types: [closed]
     branches:
-      - init
+      - main
   workflow_dispatch:
 
 jobs:
