@@ -19,6 +19,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Download npm
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
       - name: Set up Python version
         uses: actions/setup-python@v5
         with:
@@ -26,16 +31,24 @@ jobs:
 
       - name: Create and start virtual environment
         run: |
+          cd ./backend
           python -m venv venv
           source venv/bin/activate
       
       - name: Install dependencies
         run: pip install -r requirements.txt
-        
-      # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
-
+          
+      - name: Install Node dependencies
+        run: |
+          cd frontend
+          npm install
+      
+      - name: Build Frontend
+        run: |
+          cd frontend
+          npm run build
       - name: Zip artifact for deployment
-        run: zip release.zip ./* -r
+        run: zip release.zip ./backend/* -r
 
       - name: Upload artifact for deployment jobs
         uses: actions/upload-artifact@v4
