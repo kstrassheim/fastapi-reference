@@ -31,12 +31,14 @@ jobs:
 
       - name: Create and start virtual environment
         run: |
-          cd ./backend
+          cd backend
           python -m venv venv
           source venv/bin/activate
       
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: |
+          cd backend
+          pip install -r requirements.txt
           
       - name: Install Node dependencies
         run: |
