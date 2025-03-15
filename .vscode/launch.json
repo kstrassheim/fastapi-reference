@@ -5,18 +5,44 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Attach to Chrome",
-            "port": 9222,
-            "request": "attach",
-            "type": "chrome",
-            "webRoot": "${workspaceFolder}/frontend"
+            "name": "FastAPI (uvicorn)",
+            "type": "python",
+            "request": "launch",
+            "module": "uvicorn",
+            "args": [
+                "main:app",        // Adjust to your FastAPI entry point
+                "--reload"
+            ],
+            "jinja": true,
+            "justMyCode": true,
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}/backend"
+            }
         },
         {
-            "name": "Launch Chrome",
+            "name": "Vite Dev Server",
+            "type": "node-terminal",
             "request": "launch",
+            "command": "npm run dev",  // Assumes your package.json has a "dev" script for Vite
+            "cwd": "${workspaceFolder}/frontend",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Chrome Debug",
             "type": "chrome",
-            "url": "http://localhost:4000",
+            "request": "launch",
+            "url": "http://localhost:5173",  // Adjust if your Vite dev server uses a different port
             "webRoot": "${workspaceFolder}/frontend"
+        }
+    ],
+    "compounds": [
+        {
+        "name": "Full Stack Debug",
+        "configurations": [
+            "FastAPI (uvicorn)",
+            "Vite Dev Server",
+            "Chrome Debug"
+        ]
         }
     ]
 }
