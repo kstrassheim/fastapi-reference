@@ -7,7 +7,7 @@ function App() {
   const [count, setCount] = useState(0)
   const [hello, setHello] = useState(null)
   const setCountFunc = () => {
-    setCount(count + 2);
+    setCount(count + 1);
   }
 
   const apiHost= import.meta.env.MODE === 'production' ? '': 'http://localhost:8000';
@@ -25,11 +25,10 @@ function App() {
       .catch(error => console.error('Error fetching data:', error));
   }, []); // Empty dependency array runs this effect once on mount
 
-
   return (
     <>
       <div>
-        <a href="https://vite.dev" target="_blank">
+        <a href="https://vite.dev" target="_blank">W
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
         <a href="https://react.dev" target="_blank">

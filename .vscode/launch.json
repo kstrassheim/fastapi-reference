@@ -5,7 +5,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "FastAPI (uvicorn)",
+            "name": "FastAPI",
             "type": "python",
             "request": "launch",
             "module": "uvicorn",
@@ -17,7 +17,8 @@
             "justMyCode": true,
             "env": {
                 "PYTHONPATH": "${workspaceFolder}/backend"
-            }
+            },
+            "preLaunchTask": "Build Vite Frontend"
         },
         {
             "name": "Vite Dev Server",
@@ -39,7 +40,7 @@
         {
         "name": "Full Stack Debug",
         "configurations": [
-            "FastAPI (uvicorn)",
+            "FastAPI",
             "Vite Dev Server",
             "Chrome Debug"
         ]
