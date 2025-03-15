@@ -21,7 +21,7 @@ app.add_middleware(
 
 api_router = APIRouter()
 
-@api_router.get("")
+@api_router.get("/hello")
 def read_hello():
     return {"message": "Hello from API"}
 

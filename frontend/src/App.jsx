@@ -1,13 +1,31 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
+  const [hello, setHello] = useState(null)
   const setCountFunc = () => {
     setCount(count + 2);
   }
+
+  const apiHost= import.meta.env.MODE === 'production' ? '': 'http://localhost:8000';
+
+  useEffect(() => {
+    // Fetch JSON data from the API endpoint
+    fetch(`${apiHost}/api/hello`)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => setHello(data))
+      .catch(error => console.error('Error fetching data:', error));
+  }, []); // Empty dependency array runs this effect once on mount
+
+
   return (
     <>
       <div>
@@ -30,6 +48,10 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
+      <p>{import.meta.env.MODE}</p>
+      <h2>
+        {hello ? hello.message : 'Loading...'}
+      </h2>
     </>
   )
 }
