@@ -49,7 +49,7 @@ jobs:
         run: |
           cd frontend
           npm run build
-          
+
       - name: Zip artifact for deployment
         run: |
           cd backend
@@ -90,10 +90,16 @@ jobs:
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_98091920E4D5432E9786AA6ADFC34B54 }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_7BFCF659655641B8987A25BBEF11D64A }}
 
-      - name: 'Deploy to Azure Web App'
-        uses: azure/webapps-deploy@v3
-        id: deploy-to-webapp
-        with:
-          app-name: 'fast-api-reference'
-          slot-name: 'Production'
+      # - name: 'Deploy to Azure Web App'
+      #   uses: azure/webapps-deploy@v3
+      #   id: deploy-to-webapp
+      #   with:
+      #     app-name: 'fast-api-reference'
+      #     slot-name: 'Production'
+      - name: Deploy to Azure Web App using ZIP deployment
+        run: |
+          az webapp deployment source config-zip \
+          --resource-group ${{ secrets.AZURE_RESOURCE_GROUP }} \
+          --name fast-api-reference \
+          --src release.zip
           
