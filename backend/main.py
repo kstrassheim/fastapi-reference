@@ -28,7 +28,7 @@ def read_hello():
 app.include_router(api_router, prefix="/api")
 
 # Mount static files on /static (adjust if you want a different prefix)
-app.mount("", StaticFiles(directory="./backend/dist", html=True), name="client")
+app.mount("", StaticFiles(directory="./dist", html=True), name="client")
 
 # Optional: Serve index.html at the root
 @app.get('/')
