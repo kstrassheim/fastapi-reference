@@ -1,0 +1,51 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "FastAPI",
+            "type": "python",
+            "command": "pkill -f uvicorn || true",
+            "request": "launch",
+            "module": "uvicorn",
+            "args": [
+                "main:app",        // Adjust to your FastAPI entry point
+                "--reload"
+            ],
+            "jinja": true,
+            "justMyCode": true,
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}/backend"
+            },
+            "cwd": "${workspaceFolder}/backend",
+            "preLaunchTask": "Build Vite Frontend"
+        },
+        {
+            "name": "Vite Dev Server",
+            "type": "node-terminal",
+            "request": "launch",
+            "command": "npm run dev",  // Assumes your package.json has a "dev" script for Vite
+            "cwd": "${workspaceFolder}/frontend",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Chrome Debug",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://localhost:5173",  // Adjust if your Vite dev server uses a different port
+            "webRoot": "${workspaceFolder}/frontend"
+        }
+    ],
+    "compounds": [
+        {
+        "name": "Full Stack Debug",
+        "configurations": [
+            "FastAPI",
+            "Vite Dev Server",
+            "Chrome Debug"
+        ]
+        }
+    ]
+}
