@@ -33,3 +33,6 @@ app.mount("", StaticFiles(directory="./backend/dist", html=True), name="client")
 # Optional: Serve index.html at the root
 @app.get('/')
 async def client():  return RedirectResponse(url="client")
+
+if __name__ == '__main__':
+    uvicorn.run('main:app', reload=True)
