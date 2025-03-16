@@ -6,9 +6,6 @@ import Home from './pages/Home';
 import NotFound from './404';
 import './App.css'
 
-// TODO remove this setToken for development this is just for presentation
-setToken("ABC")
-
 function App() {
   return (
     <>
