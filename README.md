@@ -7,6 +7,7 @@ The app which fulfills the following requirements for a
 - Debug by starting F5 in VSCode (Starting chrome also)
 - Deployment of a productive version with precompiled frontend server
 - Deployment to Azure App Service Free Plan with Actions on Pull Request
+- Handle Front and Backend routing in FastAPI both together
 
 ## Prerequisites
 Here are the prerequisites that you have to install before running the app
@@ -30,6 +31,8 @@ python -m venv venv
 .\venv\Scripts\activate.bat
 pip install -r requirements.txt
 ```
+5. Go into the frontend folder `cd ./frontend`
+6. Run `npm install` which will download and install all frontend packages
 ### Architecture
 Here is the simple architecture description
 #### ./backend
