@@ -11,10 +11,10 @@ The app which fulfills the following requirements for a
 
 ## Prerequisites
 Here are the prerequisites that you have to install before running the app
-1. The app requires python3 to be installed on the machine with venv. To install it on on Ubuntu (WSL) just type. On Windows just install from windows store https://apps.microsoft.com/detail/9PNRBTZXMB4Z?hl=en-us&gl=CH&ocid=pdpshare 
+1. The app requires python3 to be installed on the machine with venv. To install it on on Ubuntu (WSL) just type. On Windows just install from windows store https://apps.microsoft.com/detail/9PNRBTZXMB4Z?hl=en-us&gl=CH&ocid=pdpshare and download and install NodeJS from official site https://nodejs.org/en/download 
 ```
 sudo apt update
-sudo apt install python3 python3-venv python3-pip
+sudo apt install python3 python3-venv python3-pip nodejs npm
 ```
 2. Then clone the repository
 3. Go into the backend folder `cd ./backend`
