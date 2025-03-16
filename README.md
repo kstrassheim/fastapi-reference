@@ -8,6 +8,8 @@ The app which fulfills the following requirements for a
 - Deployment of a productive version with precompiled frontend server
 - Deployment to Azure App Service Free Plan with Actions on Pull Request
 - Handle Front and Backend routing in FastAPI both together
+- Handle 404 page
+- A frame for further development with server side Authentication
 
 ## Prerequisites
 Here are the prerequisites that you have to install before running the app
